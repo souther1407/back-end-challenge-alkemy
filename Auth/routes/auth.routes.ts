@@ -1,5 +1,5 @@
 import express,{ Router,Request,Response } from "express";
-import {logearse,registarse} from "../services/auth.services"
+import {logearse,registarse,enviarCorreoBienvenida} from "../services/auth.services"
 const router:Router = Router()
 
 router.post("/login", async (req:Request,res:Response) => {
@@ -17,6 +17,8 @@ router.post("/register", async (req:Request,res:Response) => {
     const {username, password, email } = req.body
     try {
         const newUser = await registarse(username,password,email)
+        const emailInfo = await enviarCorreoBienvenida(email)
+        console.log("info email -->", emailInfo)
         res.status(201).json({success:true,newUser})
     } catch (error) {
         const err = error as Error

@@ -3,6 +3,8 @@ import db from "../../libs/sequelize"
 import {hash} from "bcrypt"
 import {hashPassword} from "../../utils"
 import { Model } from "sequelize/types"
+import nodemailer from "nodemailer"
+
 const {users} = db.models
 
 
@@ -35,4 +37,29 @@ export const registarse = async (username:string,password:string,email:string) =
     const nuevoUsuario = await users.create({username,salt:password,email})
 
     return nuevoUsuario
+}
+
+export async function enviarCorreoBienvenida(email:string){
+
+    
+
+    let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+          user: "soyhostel@gmail.com", // generated ethereal user
+          pass: "lhzzqlvfoybtstik", // generated ethereal password
+        },
+      });
+
+      let info = await transporter.sendMail({
+        from: 'Yo papa', // sender address
+        to: email, // list of receivers
+        subject: "Hello ✔", // Subject line
+        text: "Hello world?", // plain text body
+        html: "<h1>Gracias por registrarse 👻 👻 👻 </h1>", // html body
+      });
+      return info
+    
 }
