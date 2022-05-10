@@ -1,5 +1,5 @@
 import express,{ Router,Request,Response } from "express";
-import {logearse} from "../services/auth.services"
+import {logearse,registarse} from "../services/auth.services"
 const router:Router = Router()
 
 router.post("/login", async (req:Request,res:Response) => {
@@ -14,8 +14,17 @@ router.post("/login", async (req:Request,res:Response) => {
 })
 
 router.post("/register", async (req:Request,res:Response) => {
-
+    const {username, password, email } = req.body
+    try {
+        const newUser = await registarse(username,password,email)
+        res.status(201).json({success:true,newUser})
+    } catch (error) {
+        const err = error as Error
+        res.status(400).json({error:err.message})
+    }
 })
 
 
 export default router
+
+

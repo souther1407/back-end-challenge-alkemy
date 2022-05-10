@@ -1,6 +1,6 @@
 import {Sequelize, DataTypes,NOW} from "sequelize";
-import bcrypt from "bcrypt"
 import {hashPassword} from "../../utils"
+
 export default (sequelize:Sequelize) => {
     return sequelize.define("users",{
         username:{
@@ -13,6 +13,14 @@ export default (sequelize:Sequelize) => {
             allowNull:false,
             set(val:string){
                 this.setDataValue("salt",hashPassword(val))
+            }
+        },
+        email:{
+            type:DataTypes.STRING,
+            allowNull:false,
+            unique:true,
+            validate:{
+                isEmail:true
             }
         },
         created:{

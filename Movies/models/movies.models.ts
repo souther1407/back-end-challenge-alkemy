@@ -1,5 +1,4 @@
 import {Sequelize, DataTypes} from "sequelize";
-
 export default (sequelize:Sequelize) => {
     return sequelize.define("movies",{
         image:{
