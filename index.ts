@@ -4,11 +4,17 @@ import db from "./libs/sequelize"
 import {mockearCharacters,mockearPeliculas,mockearGeneros,relacionarGeneros, relacionarPersonajes} from "./utils"
 const app:Express = express()
 const port = 8080
+import swaggerUI from "swagger-ui-express"
+import swaggerJsDoc from "swagger-jsdoc"
+import swaggerSpect from "./swagger"
+
+
 
 app.use(morgan("dev"))
 app.use(express.urlencoded())
 app.use(express.json())
 
+app.use("/api-doc",swaggerUI.serve,swaggerUI.setup(swaggerJsDoc(swaggerSpect)))
 
 import authRouter from "./Auth/routes/auth.routes"
 app.use("/auth",authRouter)
