@@ -5,5 +5,5 @@
 - npm i
 - npm run dev
 
-## endpoint
+## endpoints
 Una vez que el servidor esté funcionando, ir a /api-doc para consultar la documentacion ;)
