@@ -3,7 +3,8 @@ import {Sequelize} from "sequelize";
 
 export const sequelize = new Sequelize({
     dialect:"sqlite",
-    storage:"./database.db"
+    storage:"./database.db",
+    logging:false
 })
 
 import characterModelContructor from "../Characters/models/characters.models"

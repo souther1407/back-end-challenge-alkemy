@@ -48,6 +48,6 @@ app.listen(port, async () => {
     relacionarGeneros(genres,movies)
     relacionarPersonajes(movies,characters)
 
-    users.create({username:"admin",salt:"admin123",email:"admin@admin.com"})
-   
+    await users.create({username:"admin",salt:"admin123",email:"admin@admin.com"})
+    console.log("Server listo :)")
 })
