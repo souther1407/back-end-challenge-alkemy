@@ -12,6 +12,7 @@ Api de disney para Alkemy, con crud a personajes y a peliculas/series
 - abrir una terminal de consola en la carpeta del proyecto
 - ejecutar npm install
 - ejecutar npm install -D
+- ejecutar npm run build
 - ejecutar npm run dev
 
 ## Endpoints
