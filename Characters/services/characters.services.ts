@@ -5,7 +5,7 @@ const {characters,movies} = db.models
 
 export async function mostrarTodos(columnas:string[], age?:number, name?:string,movieId?:string,weight?:number){
     if(movieId){
-        const movie = await movies.findByPk(movieId)
+        const movie:any = await movies.findByPk(movieId)
         return await movie.getCharacters()
     }
 
