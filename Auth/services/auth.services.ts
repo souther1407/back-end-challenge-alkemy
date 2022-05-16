@@ -48,8 +48,8 @@ export async function enviarCorreoBienvenida(email:string){
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-          user: "soyhostel@gmail.com", // generated ethereal user
-          pass: "lhzzqlvfoybtstik", // generated ethereal password
+          user: "ignacioletrada1407@gmail.com",
+          pass: "igna1407", // generated ethereal password
         },
       });
 
